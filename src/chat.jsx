@@ -21,7 +21,7 @@ export default function Chat() {
             message: text.trim(),
         };
         await sendMessage(message).catch((error) => {
-            logConsole(`Failed to send message: ${error.message}`);
+            // logConsole(`Failed to send message: ${error.message}`);
         });
         setMessages((prevMessages) => [...prevMessages, message]);
         setText("");
@@ -39,7 +39,7 @@ export default function Chat() {
                 const websocket = await WebSocket.connect(SERVER);
                 setWs(websocket);
                 setIsConnected(true);
-                logConsole("connected");
+                // logConsole("connected");
 
                 websocket.addListener((msg) => {
                     try {
@@ -51,23 +51,18 @@ export default function Chat() {
                     }
                 });
 
-                websocket.onerror = (error) => {
-                    logConsole(`WebSocket error: ${error.message}`);
-                };
-
                 websocket.onclose = () => {
                     setIsConnected(false);
-                    logConsole("WebSocket disconnected");
+                    // logConsole("WebSocket disconnected");
                     setTimeout(connectWebSocket, 1000); 
                 };
+                
             } catch (error) {
-                logConsole(`Failed to connect WebSocket: ${error.message}`);
+                // logConsole(`Failed to connect WebSocket: ${error.message}`);
                 setTimeout(connectWebSocket, 1000); 
             }
         }
-
         connectWebSocket();
-
         return () => {
             if (ws) {
                 ws.disconnect();
