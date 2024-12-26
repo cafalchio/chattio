@@ -2,7 +2,8 @@
 
 Chattio is a simple chat application built with Tauri and React. This app allows you to chat with your nephew in real-time using WebSockets.
 
-![Chattio Screenshot](https://github.com/cafalchio/chattio/public/dev_screenshot.png)
+
+![Chattio Screenshot](https://github.com/cafalchio/chattio/blob/main/public/dev_screenshot.png)
 
 ## Features
 
