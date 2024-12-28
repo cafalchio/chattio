@@ -2,26 +2,24 @@ import { useEffect, useState } from "react";
 import WebSocket from '@tauri-apps/plugin-websocket';
 
 
-export default function Chat() {
+export default function Chat(props) {
+    const { userName } = props;
     const [text, setText] = useState("");
     const [messages, setMessages] = useState([]);
     const [isConnected, setIsConnected] = useState(false);
     const [ws, setWs] = useState();
-    const [console, logConsole] = useState("");
+    const [console, logConsole] = useState(""); // used for debugging
     const SERVER = "ws://192.168.0.9:8009";
-
-    const userName = "cafalchio";
 
     async function sendText(event) {
         event.preventDefault();
         if (text.trim() === "") return;
         const message = {
             user: userName,
-            to: "zuca",
+            to: "cafalchio",
             message: text.trim(),
         };
         await sendMessage(message).catch((error) => {
-            // logConsole(`Failed to send message: ${error.message}`);
         });
         setMessages((prevMessages) => [...prevMessages, message]);
         setText("");
@@ -39,7 +37,7 @@ export default function Chat() {
                 const websocket = await WebSocket.connect(SERVER);
                 setWs(websocket);
                 setIsConnected(true);
-                // logConsole("connected");
+                sendMessage({ user: userName, to: "", message: "" });
 
                 websocket.addListener((msg) => {
                     try {
@@ -53,12 +51,10 @@ export default function Chat() {
 
                 websocket.onclose = () => {
                     setIsConnected(false);
-                    // logConsole("WebSocket disconnected");
                     setTimeout(connectWebSocket, 1000); 
                 };
                 
             } catch (error) {
-                // logConsole(`Failed to connect WebSocket: ${error.message}`);
                 setTimeout(connectWebSocket, 1000); 
             }
         }
