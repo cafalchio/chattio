@@ -1,0 +1,46 @@
+import React from 'react';
+import { DownOutlined } from '@ant-design/icons';
+import { Dropdown, Space } from 'antd';
+
+// Get the users from the server
+// redirect to chat with user
+
+const items = [
+    {
+        label: "user1",
+        key: '0',
+        disabled: false,
+    },
+    {
+        label: "user2",
+        key: '0',
+        disabled: false,
+    },
+    {
+        type: 'divider',
+    },
+    {
+        label: "user3",
+        key: '0',
+        disabled: true,
+    },
+    {
+        label: "user4",
+        key: '0',
+        disabled: true,
+    },
+];
+
+
+export default function Users() {
+    return (
+        <Dropdown menu={{ users }}>
+            <a onClick={(e) => e.preventDefault()}>
+                <Space>
+                    Hover me
+                    <DownOutlined />
+                </Space>
+            </a>
+        </Dropdown>
+    )
+}
