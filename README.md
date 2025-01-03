@@ -1,7 +1,7 @@
 # Chattio
 
-Chattio is a simple chat application built with Tauri and React. This app allows you to chat with your nephew in real-time using WebSockets.
-
+Chattio is a simple chat application built with Tauri and React. 
+This is a toy app to chat with my nephew.
 
 <img src="https://github.com/cafalchio/chattio/blob/main/public/dev_screenshot.png" alt="Chattio Screenshot" height="300"/>
 
@@ -15,9 +15,9 @@ Chattio is a simple chat application built with Tauri and React. This app allows
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v14 or higher)
+- [Node.js](https://nodejs.org/) (v22 or higher)
 - [Rust](https://www.rust-lang.org/tools/install)
-- [Tauri CLI](https://tauri.app/v1/guides/getting-started/prerequisites/)
+- [Tauri v2](https://v2.tauri.app/start/prerequisites/)
 
 ### Installation
 
@@ -29,8 +29,25 @@ Chattio is a simple chat application built with Tauri and React. This app allows
 
     npm install
     npm run build:css
-    npm run tauri-dev
+    # Compile and run for dev with
+    npm run tauri dev
+```
+### Missing functionalities
 
-    Building for Production
-    To build the app for production, run:
-    npm run build
+    There are many features and functionalities missing in the app, 
+    currently I am implementing the login page. Because it is a app that runs locally, 
+    the secrets cannot be hidden, I am looking for a solution.
+
+    <b>Missing features</b>
+    - Login page
+    - Multiple users
+    - User profile
+    - Encription
+
+
+Currently, websockets are being used. But I am considering WebRTC.
+There are many advantages to use WebRTC, including video and p2p encription. It is in the future work list.
+
+
+
+
